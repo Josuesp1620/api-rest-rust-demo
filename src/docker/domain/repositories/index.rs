@@ -1,4 +1,4 @@
 pub trait Repository {
-    fn get_all(&self) -> String;
-    fn get_by_id(&self, id: String) -> String;
+    async fn get_all(&self) -> String;
+    async fn get_by_id(&self, id: String) -> String;
 }

@@ -9,7 +9,7 @@ impl<R: Repository> GetByIdUseCase<R> {
         GetByIdUseCase { repository }
     }
 
-    pub fn execute(&self, id: String) -> String{
-        self.repository.get_by_id(id)
+    pub async fn execute(&self, id: String) -> String{
+        return self.repository.get_by_id(id).await;
     }
 }

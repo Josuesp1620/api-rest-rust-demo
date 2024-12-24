@@ -8,7 +8,7 @@ async fn get() -> impl Responder {
     let use_case = GetByIdUseCase::new(repo);
     
     // Ejecutamos el caso de uso
-    let result = use_case.execute("demo".to_string());
+    let result = use_case.execute("demo".to_string()).await;
 
     // Retornamos una respuesta HTTP válida
     HttpResponse::Ok().body(result)

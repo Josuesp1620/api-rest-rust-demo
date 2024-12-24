@@ -9,7 +9,7 @@ impl<R: Repository> GetAllUseCase<R> {
         GetAllUseCase { repository }
     }
 
-    pub fn execute(&self) -> String{
-        return self.repository.get_all();
+    pub async fn execute(&self) -> String{
+        return self.repository.get_all().await;
     }
 }

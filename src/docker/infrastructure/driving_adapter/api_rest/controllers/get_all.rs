@@ -7,7 +7,7 @@ async fn get() -> impl Responder {
     let repo = ImplementationRepository;
     let use_case = GetAllUseCase::new(repo);
     
-    let result = use_case.execute();
+    let result = use_case.execute().await;
 
     HttpResponse::Ok().body(result)
 }
