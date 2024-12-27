@@ -1,5 +1,6 @@
 mod core;
 mod docker;
+mod odoo;
 use crate::core::server;
 
 fn main() {
