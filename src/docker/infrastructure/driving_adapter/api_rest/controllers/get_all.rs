@@ -1,7 +1,8 @@
 use actix_web::{get, HttpResponse, Responder};
 use crate::docker::application::use_cases::get_all::GetAllUseCase;
 use crate::docker::infrastructure::implementation::index::ImplementationRepository;
-use log::{error, info};
+// use log::{error, info};
+use log::error;
 
 #[get("/get-all")]
 async fn get() -> impl Responder {
