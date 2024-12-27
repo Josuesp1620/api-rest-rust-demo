@@ -1,7 +1,8 @@
-use actix_web::{App, HttpServer};
+use actix_web::{web, App, HttpServer};
 use actix_web::middleware::Logger;
 use env_logger::Env;
 use crate::core::routes::api;
+use crate::core::services::mongodb_connector::index::Database;
 
 pub struct Server {
     _port: u16,
@@ -23,8 +24,12 @@ impl Server {
 
         env_logger::init_from_env(Env::default().default_filter_or("info"));
 
-        HttpServer::new(|| {
+        let db = Database::init().await;
+        let db_data = web::Data::new(db);
+
+        HttpServer::new(move || {
             App::new()
+                .app_data(db_data.clone())
                 .configure(api::scope_routes)
                 .wrap(Logger::default())
         })

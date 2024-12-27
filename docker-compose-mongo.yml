@@ -1,0 +1,13 @@
+services:
+  mongo-dooservice:
+    container_name: mongo-dooservice
+    image: mongo:latest
+    hostname: host-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./database/data:/data/db
+      - ./database/log:/var/log/mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: dooservice
+      MONGO_INITDB_ROOT_PASSWORD: dooservice
