@@ -1,14 +1,14 @@
 use mongodb::bson::oid::ObjectId;
 use serde::{Deserialize, Serialize};
 
-use crate::odoo::domain::entities::index::ProjectEntity;
+use crate::odoo::domain::{entities::index::ProjectEntity, enums::index::OdooType};
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Project {
     pub _id: ObjectId,
     pub name: String,
     pub version: String,
-    pub odoo_type: String,
+    pub odoo_type: OdooType,
     pub path: String,
     pub port_web: u16,    
     pub port_db: u16,    

@@ -21,7 +21,7 @@ impl TryFrom<Project> for ProjectResponse {
             _id: item._id.to_hex(),
             name: item.name,
             version: item.version,
-            odoo_type: item.odoo_type,
+            odoo_type: item.odoo_type.as_str().to_string(),
             path: item.path,
             port_web: item.port_web,
             port_db: item.port_db,

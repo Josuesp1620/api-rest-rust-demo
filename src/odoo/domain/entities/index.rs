@@ -1,11 +1,13 @@
 use serde::Deserialize;
 
+use crate::odoo::domain::enums::index::OdooType;
+
 #[derive(Debug, Deserialize)]
 pub struct ProjectEntity {
     pub _id: Option<String>,
     pub name: String,
     pub version: String,
-    pub odoo_type: String,
+    pub odoo_type: OdooType,
     pub path: Option<String>,
     pub port_web: Option<u16>,
     pub random_port_web: bool,
