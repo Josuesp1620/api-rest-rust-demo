@@ -9,5 +9,13 @@ fn main() {
 
     let server = server::Server::new(host, port);
     
-    server.listen().unwrap();
+    match server.listen() {
+        Ok(_) => {
+            println!("El servidor se ha iniciado correctamente en {}:{}", host, port);
+        }
+        Err(e) => {
+            eprintln!("Error al iniciar el servidor");
+            eprintln!("{}", e);
+        }
+    };
 }
