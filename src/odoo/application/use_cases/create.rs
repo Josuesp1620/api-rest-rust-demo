@@ -1,5 +1,7 @@
 use crate::odoo::domain::entities::index::ProjectEntity;
+use crate::odoo::domain::mappers::index::ProjectResponse;
 use crate::odoo::domain::repositories::index::Repository;
+use crate::odoo::infrastructure::driven_adapter::generate_port::{find_available_port, generate_random_password};
 use std::error::Error;
 
 pub struct CreateUseCase<R: Repository> { 
@@ -11,7 +13,7 @@ impl<R: Repository> CreateUseCase<R> {
         CreateUseCase { repository }
     }
 
-    pub async fn execute(&self, project: ProjectEntity) -> Result<Option<String>, Box<dyn Error>>{  
-        return self.repository.create(project).await;
-    }
+    pub async fn execute(&self, mut project: ProjectEntity) -> Result<Option<ProjectResponse>, Box<dyn Error>> {
+        self.repository.create(project).await
+    }    
 }
